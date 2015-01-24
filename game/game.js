@@ -32,7 +32,13 @@ $.fn.level_complete = function() {
   jQuery(function($){
     var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Play" id="restart" class="button button-error">Restart</a><a href="#" title="Play" id="next-level" class="button button-success">Next Level?</a></div></div>';
     $("#field").fadeOut(function(){
-      $("#field").width("100%").html(html).fadeIn();
+      $("#field").width("100%").height("100%").html(html).css({
+        'position' : 'absolute',
+        'left' : '50%',
+        'top' : '50%',
+        'margin-left' : -$(this).width()/2,
+        'margin-top' : -$(this).height()/2
+      }).fadeIn();
     });
   });
 }
@@ -316,7 +322,12 @@ exports.createField = function createField(scheme, playForGuy) {
 
 	field.css({
 		width: fieldWidth * cellWidth,
-		height: fieldHeight * cellHeight
+		height: fieldHeight * cellHeight,
+		position: 'absolute',
+    left: '50%',
+    top: '50%',
+    'margin-left': -(fieldWidth * cellWidth)/2,
+    'margin-top': -(fieldHeight * cellHeight)/2
 	});
 
 	cells = [];
