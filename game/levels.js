@@ -1,10 +1,36 @@
 window.levels = [
 [
+	"xxxxxxx",
+	"xA....x",
+	"x.xxx.x",
+	"x.x.x.x",
+	"x..B..x",
+	"xxxxxxx"
+],
+[
+	"xxxxxxxxxxx",
+	"xB...i....x",
+	"xxxxxx..xxx",
+	"xA...x.xxxx",
+	"x.xx.x.xxxx",
+	"x....x.xxxx",
+	"x.xx.x.xxxx",
+	"x.xx.x...xx",
+	"x........xx",
+	"xxxxxxxxxxx"
+],
+[
 	"xxxxx",
-	"xA..x",
+	"x.A.x",
 	"x.x.x",
-	"x.B.x",
-	"xxxxx"
+	"x..Bx",
+	"xxxxx",
+],
+[
+	"xxxxxxxxxxxxx",
+	"x...x.......x",
+	"xA..f..i...Bx",
+	"xxxxxxxxxxxxx",
 ],
 [
 	"xxxxxxxxxxxxxxx",
@@ -31,5 +57,59 @@ window.levels = [
 	"x.............x",
 	"x............Bx",
 	"xxxxxxxxxxxxxxx",
+],
+[
+	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"xA...........................x",
+	"x............................x",
+	"x...i..i..i..i..i..i..i..i...x",
+	"x............................x",
+	"x......i.....................x",
+	"x...i.......i............i...x",
+	"x............................x",
+	"x........i..........i........x",
+	"x............................x",
+	"x......i.........i.i.........x",
+	"x............................x",
+	"x....i......i................x",
+	"x.....................i......x",
+	"x............................x",
+	"x............i.......i.......x",
+	"x............................x",
+	"x............................x",
+	"x...........................Bx",
+	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+],
+[
+	"xxxxxx",
+	"xf...x",
+	"xx..xx",
+	"x..fAx",
+	"xx.B.x",
+	"xxxxxx",
+],
+[
+	"xxxxxx",
+	"xAf.Bx",
+	"x.f.xx",
+	"x...xx",
+	"xf...x",
+	"xxxxxx",
+],
+[
+	"xxxxxxxxxxxxxxx",
+	"x..x...A.fxf..x",
+	"x.....x.......x",
+	"x....x.x.f.f..x",
+	"x.x.....f.xxf.x",
+	"x.f........Bf.x",
+	"xxxxxxxxxxxxxxx",
 ]
+];
+
+window.levelTexts = [
+	"We need to meet!",
+	"You cannot fail",
+	"You can fail",
+	""
 ];
