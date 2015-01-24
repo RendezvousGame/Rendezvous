@@ -4,22 +4,28 @@ body {
 
 #field {
 	position: relative;
+	background: url(img/grass-wide.png) repeat;
 }
 
 .cell {
   width: 32px;
   height: 32px;
 	position: absolute;
-	border: 1px solid black;
 }
 .cell.empty {
 	background: url(img/forest_tiles.png) 0 0;
 }
 .cell.wall {
 	background-color: red;
+	background: url(img/white_brick_wall.png) repeat;
 }
 .cell.fire {
 	background-color: orange;
+	background: url(img/lava.png) no-repeat 0 0;
+}
+
+.cell.fire2 {
+  background: url(img/lava.png) no-repeat 0 -160px;
 }
 
 .ice {
