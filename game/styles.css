@@ -53,6 +53,16 @@ h1#logo {
                0 20px 20px rgba(0,0,0,.15);
 }
 
+#start-screen h4 {
+  margin: 0;
+  font-size: 18px;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.button {
+  margin: 0px 15px !important;
+}
 
 
 

@@ -1,4 +1,32 @@
-(function(exports) {
+var current_level = 0;
+
+jQuery(function($){
+  $("#play-button").click(function(){
+    createField(levels[0], true);
+  });
+  
+  $(document).on('click','#restart', function() {
+    current_level = 0;
+    createField(levels[current_level], true);
+  });
+  
+  $(document).on('click','#next-level', function() {
+    createField(levels[++current_level], true);
+  });
+  
+});
+
+$.fn.level_complete = function() {
+  jQuery(function($){
+    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Play" id="restart" class="button button-error">Restart</a><a href="#" title="Play" id="next-level" class="button button-success">Next Level?</a></div></div>';
+    $("#field").fadeOut(function(){
+      $("#field").width("100%").html(html).fadeIn();
+    });
+  });
+}
+
+
+;(function(exports) {
 
 var field;
 var heroes;
@@ -219,7 +247,9 @@ function move(dx, dy) {
 				mainHero.div.css("zIndex", 2);
 				secondHero.div.css("zIndex", 2);
 
-				$("<div>").addClass("final").hide().appendTo(field).fadeIn(1000);
+				$("<div>").addClass("final").hide().appendTo(field).fadeIn(2000, function(){
+  				$("body").level_complete();
+				});
 
 				mainHero = null;
 				secondHero = null;
@@ -339,5 +369,7 @@ exports.saveField = function saveField() {
 	s += "],\n";
 	return s;
 };
+
+
 
 })(window);
