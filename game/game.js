@@ -232,7 +232,7 @@ exports.createField = function createField(scheme) {
 					type = '.';
 				}
 
-				var div = $("<div>").appendTo(field).addClass("cell").addClass(typesToStyles[type]).css({
+				var div = $("<div>").appendTo(field).addClass("cell").addClass(typesToStyles[type]).addClass("texture" + (Math.floor(Math.random() * 3) + 1)).addClass("addon" + (Math.floor(Math.random() * 25) + 1)).css({
 					left: j * cellWidth,
 					top: i * cellHeight,
 					width: cellWidth,
