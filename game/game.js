@@ -86,7 +86,7 @@ Hero.prototype.canGo = function(dx, dy) {
 		if(cell.iceDiv) {
 			var xxx = xx + dx;
 			var yyy = yy + dy;
-			if(xxx >= 0 && xxx < fieldWidth && yyy >= 0 && yyy < fieldHeight && (cells[yyy][xxx].type == '.' || cells[yyy][xxx].type == 'f') && !cells[yyy][xxx].iceDiv)
+			if(xxx >= 0 && xxx < fieldWidth && yyy >= 0 && yyy < fieldHeight && (cells[yyy][xxx].type == '.' || cells[yyy][xxx].type == 'f') && !cells[yyy][xxx].iceDiv && !isHeroThere(xxx, yyy))
 				return true;
 			return false;
 		}
@@ -145,6 +145,10 @@ Hero.prototype.showTry = function(dx, dy) {
 		left: this.x * cellWidth - heroOffsetX,
 		top: this.y * cellHeight - heroOffsetY
 	}, 50);
+};
+
+function isHeroThere(x, y) {
+	return mainHero.x == x && mainHero.y == y || secondHero.x == x && secondHero.y == y;
 };
 
 function Cell(x, y, type, div) {
