@@ -127,6 +127,13 @@ window.levels = [
 	"x.f........Bf.x",
 	"xxxxxxxxxxxxxxx",
 ],
+[
+	"xxxxxxxxxx",
+	"xx.xAfx..x",
+	"x..x...f.x",
+	"x.x.x..B.x",
+	"xxxxxxxxxx",
+],
 ];
 
 window.levelTexts = [
