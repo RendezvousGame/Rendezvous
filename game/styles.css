@@ -25,7 +25,6 @@ body {
 .ice {
 	position: absolute;
 	background-color: lightblue;
-	z-index: 1;
 }
 
 .hero {
@@ -38,7 +37,7 @@ body {
 }
 .hero.hero2 {
 	background-color: yellow;
-  background: url(img/princess.png) no-repeat -530px -141px;
+  background: url(img/princess.png) no-repeat;
   width: 28px;
   height: 50px;
 }

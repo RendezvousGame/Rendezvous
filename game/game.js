@@ -7,6 +7,13 @@ var mainHero, secondHero;
 var cellWidth = 32;
 var cellHeight = 32;
 
+var heroImageWidth = 64;
+var heroImageHeight = 64;
+var heroImageFramesCount = 9;
+var heroAnimSpeed = 8;
+var heroOffsetX = (heroImageWidth - cellWidth) * 0.5;
+var heroOffsetY = 33;
+
 var fieldWidth, fieldHeight;
 var cells = null;
 
@@ -19,25 +26,52 @@ var typesToStyles = {
 
 var editMode = true;
 
+function directionNumber(dx, dy) {
+	if(dx == 1) return 3;
+	if(dx == -1) return 1;
+	if(dy == 1) return 2;
+	return 0;
+}
+
 function Hero() {
 	this.x = 0;
 	this.y = 0;
-	this.div = $("<div>").addClass("hero");
+	this.div = $("<div>").addClass("hero").css({
+		width: heroImageWidth,
+		height: heroImageHeight
+	});
+	this.direction = 2;
 };
-Hero.prototype.setPosition = function(x, y, anim) {
+Hero.prototype.setPosition = function(x, y, anim, plus) {
 	this.x = x;
 	this.y = y;
 	var o = {
-		left: x * cellWidth,
-		top: y * cellHeight,
-		width: cellWidth,
-		height: cellHeight
+		left: x * cellWidth - heroOffsetX,
+		top: y * cellHeight - heroOffsetY
 	};
 	if(anim) {
-		this.div.finish().animate(o, 100);
+		var self = this;
+		this.div.finish();
+		if(plus) this.reorder();
+		this.div.animate(o, {
+			duration: 100,
+			progress: function(animation, progress) {
+				self.div.css("backgroundPosition", (-((Math.floor(progress * heroAnimSpeed)) % heroImageFramesCount) * heroImageWidth) + "px " + (-self.direction * heroImageHeight) + "px");
+			}
+		});
+		if(!plus) this.queueReorder();
 	} else {
 		this.div.css(o);
 	}
+};
+Hero.prototype.reorder = function() {
+	this.div.insertAfter(cells[this.y][this.x].div);
+};
+Hero.prototype.queueReorder = function() {
+	var self = this;
+	this.div.queue(function() {
+		self.reorder();
+	});
 };
 Hero.prototype.canGo = function(dx, dy) {
 	var xx = this.x + dx;
@@ -69,7 +103,7 @@ Hero.prototype.go = function(dx, dy) {
 	if(this.canGo(dx, dy)) {
 		var iceDiv = cells[this.y + dy][this.x + dx].iceDiv;
 		if(iceDiv) {
-			iceDiv.animate({
+			iceDiv.finish().insertAfter(cells[this.y + dy * 2][this.x + dx * 2].div).animate({
 				left: (this.x + dx * 2) * cellWidth,
 				top: (this.y + dy * 2) * cellHeight
 			}, 100);
@@ -82,18 +116,19 @@ Hero.prototype.go = function(dx, dy) {
 			}
 			cells[this.y + dy][this.x + dx].iceDiv = null;
 		}
-		this.setPosition(this.x + dx, this.y + dy, true);
+		this.direction = directionNumber(dx, dy);
+		this.setPosition(this.x + dx, this.y + dy, true, dx > 0 || dy > 0);
 	} else {
 		this.showTry(dx, dy);
 	}
 };
 Hero.prototype.showTry = function(dx, dy) {
 	this.div.finish().animate({
-		left: (this.x + dx * 0.2) * cellWidth,
-		top: (this.y + dy * 0.2) * cellHeight
+		left: (this.x + dx * 0.2) * cellWidth - heroOffsetX,
+		top: (this.y + dy * 0.2) * cellHeight - heroOffsetY
 	}, 50).animate({
-		left: this.x * cellWidth,
-		top: this.y * cellHeight
+		left: this.x * cellWidth - heroOffsetX,
+		top: this.y * cellHeight - heroOffsetY
 	}, 50);
 };
 
@@ -176,7 +211,7 @@ exports.createField = function createField(scheme) {
 					type = '.';
 				}
 				else if(scheme[i][j] == 'i') {
-					iceDiv = $("<div>").appendTo(field).addClass("ice").css({
+					iceDiv = $("<div>").addClass("ice").css({
 						left: j * cellWidth,
 						top: i * cellHeight,
 						width: cellWidth,
@@ -193,6 +228,8 @@ exports.createField = function createField(scheme) {
 				});
 				var cell = new Cell(j, i, type, div);
 				cell.iceDiv = iceDiv;
+				if(iceDiv)
+					iceDiv.insertAfter(div);
 				row.push(cell);
 
 				if(editMode) {
@@ -215,7 +252,7 @@ exports.createField = function createField(scheme) {
 	secondHero = heroes[1];
 
 	for(var i = 0; i < heroes.length; ++i)
-		heroes[i].div.appendTo("#field");
+		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
 }
 
 exports.saveField = function saveField() {
