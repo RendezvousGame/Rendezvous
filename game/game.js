@@ -2,16 +2,22 @@ var current_level = 0;
 
 jQuery(function($){
   $("#play-button").click(function(){
-    createField(levels[0], true);
+    $("#field").fadeOut(function(){
+      createField(levels[0], true);
+    });
   });
   
   $(document).on('click','#restart', function() {
     current_level = 0;
-    createField(levels[current_level], true);
+    $("#field").fadeOut(function(){
+      createField(levels[current_level], true);
+    });
   });
   
   $(document).on('click','#next-level', function() {
-    createField(levels[++current_level], true);
+    $("#field").fadeOut(function(){
+      createField(levels[++current_level], true);
+    });
   });
   
 });
@@ -349,6 +355,8 @@ exports.createField = function createField(scheme, playForGuy) {
 
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
+		
+  field.fadeIn();
 }
 
 exports.saveField = function saveField() {
