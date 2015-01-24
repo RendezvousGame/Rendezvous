@@ -7,17 +7,21 @@ body {
 }
 
 .cell {
+  width: 40px;
+  height: 40px;
 	position: absolute;
 	border: 1px solid black;
 }
 .cell.empty {
-	background-color: white;
+	background: url(game/img/forest_tiles.png) 0 0;
 }
 .cell.wall {
 	background-color: red;
 }
 
 .hero {
+  width: 32px;
+  height: 32px;
 	position: absolute;
 }
 .hero.hero1 {
@@ -25,4 +29,7 @@ body {
 }
 .hero.hero2 {
 	background-color: yellow;
+  background: url(game/img/princess.png) no-repeat -530px -141px;
+  width: 28px;
+  height: 50px;
 }

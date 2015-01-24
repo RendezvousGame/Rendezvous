@@ -4,8 +4,8 @@ var field;
 var heroes;
 var mainHero, secondHero;
 
-var cellWidth = 40;
-var cellHeight = 40;
+var cellWidth = 32;
+var cellHeight = 32;
 
 var fieldWidth, fieldHeight;
 var cells = null;
