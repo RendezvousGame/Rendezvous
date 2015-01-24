@@ -223,7 +223,7 @@ exports.saveField = function saveField() {
 	for(var i = 0; i < cells.length; ++i) {
 		var row = [];
 		for(var j = 0; j < cells[i].length; ++j) {
-			row.push(cells[i][j].type);
+			row.push(cells[i][j].iceDiv ? 'i' : cells[i][j].type);
 		}
 		types.push(row);
 	}
@@ -231,9 +231,9 @@ exports.saveField = function saveField() {
 	types[secondHero.y][secondHero.x] = 'B';
 	var s = "[\n";
 	for(var i = 0; i < cells.length; ++i) {
-		s += "\t\"" + types[i].join("") + "\"\n";
+		s += "\t\"" + types[i].join("") + "\",\n";
 	}
-	s += "]\n";
+	s += "],\n";
 	return s;
 };
 
