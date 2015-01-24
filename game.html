@@ -19,6 +19,10 @@
 					});
 				})(i);
 			}
+
+			$("<button>").appendTo("#loadButtons").text("Save").click(function() {
+				window.prompt("Copy to clipboard: Ctrl+C, Enter", saveField());
+			});
 		</script>
 	</body>
 </html>

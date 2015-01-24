@@ -10,10 +10,13 @@ var cellHeight = 40;
 var fieldWidth, fieldHeight;
 var cells = null;
 
+var cellTypes = ".x";
 var typesToStyles = {
 	'.': 'empty',
 	'x': 'wall'
 };
+
+var editMode = true;
 
 function Hero() {
 	this.x = 0;
@@ -129,29 +132,43 @@ exports.createField = function createField(scheme) {
 	for(var i = 0; i < fieldHeight; ++i) {
 		var row = [];
 		for(var j = 0; j < fieldWidth; ++j) {
-			var type = scheme[i][j];
+			(function() {
+				var type = scheme[i][j];
 
-			if(scheme[i][j] == 'A') {
-				heroes[0] = new Hero();
-				heroes[0].div.addClass("hero1");
-				heroes[0].setPosition(j, i, false);
-				type = '.';
-			}
-			if(scheme[i][j] == 'B') {
-				heroes[1] = new Hero();
-				heroes[1].div.addClass("hero2");
-				heroes[1].setPosition(j, i, false);
-				type = '.';
-			}
+				if(scheme[i][j] == 'A') {
+					heroes[0] = new Hero();
+					heroes[0].div.addClass("hero1");
+					heroes[0].setPosition(j, i, false);
+					type = '.';
+				}
+				if(scheme[i][j] == 'B') {
+					heroes[1] = new Hero();
+					heroes[1].div.addClass("hero2");
+					heroes[1].setPosition(j, i, false);
+					type = '.';
+				}
 
-			var div = $("<div>").appendTo(field).addClass("cell").addClass(typesToStyles[type]).css({
-				left: j * cellWidth,
-				top: i * cellHeight,
-				width: cellWidth,
-				height: cellHeight
-			});
-			row.push(new Cell(j, i, type, div));
+				var div = $("<div>").appendTo(field).addClass("cell").addClass(typesToStyles[type]).css({
+					left: j * cellWidth,
+					top: i * cellHeight,
+					width: cellWidth,
+					height: cellHeight
+				});
+				var cell = new Cell(j, i, type, div);
+				row.push(cell);
 
+				if(editMode) {
+					div.click(function() {
+						div.removeClass(typesToStyles[cell.type]);
+						var q = cellTypes.indexOf(cell.type);
+						q++;
+						if(q >= cellTypes.length)
+							q = 0;
+						cell.type = cellTypes[q];
+						cell.div.addClass(typesToStyles[cell.type]);
+					});
+				}
+			})();
 		}
 		cells.push(row);
 	}
@@ -162,5 +179,24 @@ exports.createField = function createField(scheme) {
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.appendTo("#field");
 }
+
+exports.saveField = function saveField() {
+	var types = [];
+	for(var i = 0; i < cells.length; ++i) {
+		var row = [];
+		for(var j = 0; j < cells[i].length; ++j) {
+			row.push(cells[i][j].type);
+		}
+		types.push(row);
+	}
+	types[mainHero.y][mainHero.x] = 'A';
+	types[secondHero.y][secondHero.x] = 'B';
+	var s = "[\n";
+	for(var i = 0; i < cells.length; ++i) {
+		s += "\t\"" + types[i].join("") + "\"\n";
+	}
+	s += "]\n";
+	return s;
+};
 
 })(window);
