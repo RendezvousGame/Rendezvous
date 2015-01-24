@@ -13,12 +13,53 @@ body {
 	position: absolute;
 }
 .cell.empty {
-	background: url(img/forest_tiles.png) 0 0;
+	background: url(img/grass.png);
+	background-position: 0px -160px;
 }
+
+.cell.empty.texture2 {
+  background-position: -32px -160px; 
+}
+
+.cell.empty.texture3 {
+  background-position: -64px -160px; 
+}
+
+
+
+
 .cell.wall {
 	background-color: red;
-	background: url(img/white_brick_wall.png) repeat;
+	background: url(img/rock.png) 0 0;
 }
+
+.cell.wall.texture3 {
+  background-position: -32px 0;
+}
+
+.cell.wall.addon5 {
+  background: url(img/watergrass.png) 0 0;
+}
+
+
+.cell.wall.addon10 {
+  background: url(img/watergrass.png) 0 -32px;
+}
+
+
+.cell.wall.addon15 {
+  background: url(img/forest_tiles.png) -352px -32px; 
+}
+
+.cell.wall.addon20 {
+  background: url(img/forest_tiles.png) -384px -32px;
+}
+
+.cell.wall.addon25 {
+  background: url(img/forest_tiles.png) -193px -96px;
+}
+
+
 .cell.fire {
 	background-color: orange;
 	background: url(img/lava.png) no-repeat 0 0;
@@ -31,6 +72,7 @@ body {
 .ice {
 	position: absolute;
 	background-color: lightblue;
+	background: url(img/iceBlockTop.png);
 }
 
 .hero {
