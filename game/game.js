@@ -16,7 +16,12 @@ jQuery(function($){
   
   $(document).on('click','#next-level', function() {
     $("#field").fadeOut(function(){
-      createField(levels[++current_level], true);
+      if(current_level + 1 < levels.length) {
+        createField(levels[++current_level], true);
+      } else {
+        current_level = 0
+        createField(levels[current_level], true);
+      }
     });
   });
   
