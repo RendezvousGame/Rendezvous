@@ -427,6 +427,7 @@ exports.createField = function createField(scheme, playForGuy) {
 		
   field.fadeIn();
   
+  $("#retry").fadeOut().remove();
   $('<a href="#" title="Replay Level" id="retry" class="restart button button-error button-small">Reset</a>').hide().appendTo('body').css({
     position: 'absolute',
     top: '10px',
