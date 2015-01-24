@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,600,400);
+@import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
+
+
+html {
+  background: url(img/bg.png) top center no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background: rgba(0, 0, 0, 0.60);
+  color: #515F69;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+#header {
+  background: black;
+  padding: 20px 0;
+  border-top: 3px solid #FF5E33;
+}
+
+#header h1#logo {
+  margin: 0px;
+  font-size: 26px;
+  color: white;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+
+section#play {
+  margin: 50px 0;
+  padding-bottom: 50px;
+}
+
+#game {
+  background: black;
+  height: 600px;
+  width: 800px;
+  padding: 10px;
+  margin: 0 auto;
+  
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+
+
+#footer {
+  padding: 20px;
+  text-align: center;
+}
+
+
