@@ -8,8 +8,7 @@ jQuery(function($){
     });
   });
   
-  $(document).on('click','#restart', function() {
-    current_level = 0;
+  $(document).on('click','.restart', function() {
     $("#field").fadeOut(function(){
       createField(levels[current_level], true);
     });
@@ -37,7 +36,8 @@ jQuery(function($){
 
 $.fn.level_complete = function() {
   jQuery(function($){
-    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Play" id="restart" class="button button-error">Restart</a><a href="#" title="Play" id="new-level" class="button button-success">Next Level?</a></div></div>';
+    $("#retry").fadeOut().remove();
+    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" title="Play" id="new-level" class="button button-success">Next Level?</a></div></div>';
     $("#field").delay(500).fadeOut(function(){
       $("#field").width("100%").height("100%").html(html).css({
         'position' : 'absolute',
@@ -426,6 +426,13 @@ exports.createField = function createField(scheme, playForGuy) {
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
 		
   field.fadeIn();
+  
+  $('<a href="#" title="Replay Level" id="retry" class="restart button button-error button-small">Reset</a>').hide().appendTo('body').css({
+    position: 'absolute',
+    top: '10px',
+    right: '10px'
+  }).delay(5000).fadeIn('slow');
+  
 }
 
 exports.saveField = function saveField() {
