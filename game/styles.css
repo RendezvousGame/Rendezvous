@@ -7,13 +7,13 @@ body {
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 	position: absolute;
 	border: 1px solid black;
 }
 .cell.empty {
-	background: url(game/img/forest_tiles.png) 0 0;
+	background: url(img/forest_tiles.png) 0 0;
 }
 .cell.wall {
 	background-color: red;
@@ -38,7 +38,7 @@ body {
 }
 .hero.hero2 {
 	background-color: yellow;
-  background: url(game/img/princess.png) no-repeat -530px -141px;
+  background: url(img/princess.png) no-repeat -530px -141px;
   width: 28px;
   height: 50px;
 }
