@@ -2,6 +2,10 @@ body {
 	background-color: white;
 }
 
+#field {
+	position: relative;
+}
+
 .cell {
 	position: absolute;
 	border: 1px solid black;

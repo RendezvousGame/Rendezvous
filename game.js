@@ -60,8 +60,8 @@ Hero.prototype.go = function(dx, dy) {
 };
 Hero.prototype.showTry = function(dx, dy) {
 	this.div.animate({
-		left: (this.x + dx * 0.5) * cellWidth,
-		top: (this.y + dy * 0.5) * cellHeight
+		left: (this.x + dx * 0.2) * cellWidth,
+		top: (this.y + dy * 0.2) * cellHeight
 	}, 50).animate({
 		left: this.x * cellWidth,
 		top: this.y * cellHeight
@@ -118,6 +118,11 @@ exports.createField = function createField(scheme) {
 
 	fieldWidth = scheme[0].length;
 	fieldHeight = scheme.length;
+
+	field.css({
+		width: fieldWidth * cellWidth,
+		height: fieldHeight * cellHeight
+	});
 
 	cells = [];
 	heroes = [null, null];

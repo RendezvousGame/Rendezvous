@@ -2,27 +2,23 @@
 <html>
 	<head>
 		<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="levels.js"></script>
 		<script type="text/javascript" src="game.js"></script>
 		<link href="styles.css" rel="stylesheet">
 	</head>
 	<body>
+		<div id="loadButtons"></div>
 		<div id="field"></div>
 		<script type="text/javascript">
 			init();
 
-			var scheme = [
-			"xxxxxxxxxxxxxxx",
-			"xA.........xxxx",
-			"xx.......xxxxxx",
-			"xxxxx.....xxxxx",
-			"xxxxx.....xxxxx",
-			"xxxxx..x..xxxxx",
-			"xxxxxxxx...xxxx",
-			"x..xxxxx.x...xx",
-			".............Bx",
-			"xxxxxxxxxxxxxxx"
-			];
-			createField(scheme);
+			for(var i = 0; i < levels.length; ++i) {
+				(function(i) {
+					$("<button>").appendTo("#loadButtons").text("Load Level " + i).click(function() {
+						createField(levels[i]);
+					});
+				})(i);
+			}
 		</script>
 	</body>
 </html>
