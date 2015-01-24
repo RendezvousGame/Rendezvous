@@ -101,23 +101,35 @@ Hero.prototype.canMove = function(dx, dy) {
 };
 Hero.prototype.go = function(dx, dy) {
 	if(this.canGo(dx, dy)) {
-		var iceDiv = cells[this.y + dy][this.x + dx].iceDiv;
+		var plus = dx > 0 || dy > 0;
+		var xx = this.x + dx;
+		var yy = this.y + dy;
+		var xxx = xx + dx;
+		var yyy = yy + dy;
+		var iceDiv = cells[yy][xx].iceDiv;
 		if(iceDiv) {
-			iceDiv.finish().insertAfter(cells[this.y + dy * 2][this.x + dx * 2].div).animate({
-				left: (this.x + dx * 2) * cellWidth,
-				top: (this.y + dy * 2) * cellHeight
+			iceDiv.finish();
+			if(plus)
+				iceDiv.insertAfter(cells[yyy][xxx].div);
+			iceDiv.animate({
+				left: xxx * cellWidth,
+				top: yyy * cellHeight
 			}, 100);
-			if(cells[this.y + dy * 2][this.x + dx * 2].type == 'f') {
-				cells[this.y + dy * 2][this.x + dx * 2].type = '.';
-				cells[this.y + dy * 2][this.x + dx * 2].div.removeClass("fire").addClass("empty");
+			if(!plus)
+				iceDiv.queue(function() {
+					iceDiv.insertAfter(cells[yyy][xxx].div);
+				});
+			if(cells[yyy][xxx].type == 'f') {
+				cells[yyy][xxx].type = '.';
+				cells[yyy][xxx].div.removeClass("fire").addClass("empty");
 				iceDiv.fadeOut(100);
 			} else {
-				cells[this.y + dy * 2][this.x + dx * 2].iceDiv = iceDiv;
+				cells[yyy][xxx].iceDiv = iceDiv;
 			}
-			cells[this.y + dy][this.x + dx].iceDiv = null;
+			cells[yy][xx].iceDiv = null;
 		}
 		this.direction = directionNumber(dx, dy);
-		this.setPosition(this.x + dx, this.y + dy, true, dx > 0 || dy > 0);
+		this.setPosition(xx, yy, true, plus);
 	} else {
 		this.showTry(dx, dy);
 	}
