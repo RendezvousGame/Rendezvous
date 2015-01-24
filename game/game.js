@@ -1,6 +1,7 @@
 var current_level = 0;
 
 jQuery(function($){
+  
   $("#play-button").click(function(){
     $("#field").fadeOut(function(){
       createField(levels[0], true);
@@ -38,6 +39,30 @@ $.fn.level_complete = function() {
 
 
 ;(function(exports) {
+  
+window.audio = new Audio();
+audio.setAttribute("loop", "loop");
+
+function play_music(sound) {
+  
+  mySound = "";
+  
+  switch(sound) {
+    case "intro": 
+      sound = "AboutScene.mp3";
+      break;
+    case "gameplay":
+      sound = "Andante.mp3";
+      break;
+  }
+
+  audio.setAttribute("src","audio/" + sound);
+
+  audio.load(); //call this to just preload the audio without playing
+  audio.play(); //call this to play the song right away
+}
+  
+  
 
 var field;
 var heroes;
@@ -201,6 +226,7 @@ function Cell(x, y, type, div) {
 
 exports.init = function init() {
 	field = $("#field");
+	play_music("intro");
 
 	$(document).keydown(function(e) {
 		switch(e.which) {
@@ -260,6 +286,7 @@ function move(dx, dy) {
 				secondHero.div.css("zIndex", 2);
 
 				$("<div>").addClass("final").hide().appendTo(field).fadeIn(2000, function(){
+  				play_music("intro");
   				$("body").level_complete();
 				});
 
@@ -282,6 +309,7 @@ function move(dx, dy) {
 
 exports.createField = function createField(scheme, playForGuy) {
 	field.empty();
+	play_music("gameplay");
 
 	fieldWidth = scheme[0].length;
 	fieldHeight = scheme.length;
