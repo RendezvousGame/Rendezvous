@@ -181,12 +181,16 @@ exports.init = function init() {
 };
 
 function move(dx, dy) {
-	if(mainHero.canMove(dx, dy) && secondHero.canMove(-dx, -dy)) {
+	var mainHeroCanMove = mainHero.canMove(dx, dy);
+	var secondHeroCanMove = secondHero.canMove(-dx, -dy);
+	if(mainHeroCanMove && secondHeroCanMove) {
 		mainHero.go(dx, dy);
 		secondHero.go(-dx, -dy);
 	} else {
-		mainHero.showTry(dx, dy);
-		secondHero.showTry(-dx, -dy);
+		if(!mainHeroCanMove)
+			mainHero.showTry(dx, dy);
+		if(!secondHeroCanMove)
+			secondHero.showTry(-dx, -dy);
 	}
 };
 

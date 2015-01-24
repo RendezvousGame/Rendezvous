@@ -76,19 +76,13 @@ body {
 }
 
 .hero {
-  width: 32px;
-  height: 32px;
 	position: absolute;
 }
 .hero.hero1 {
 	background-color: blue;
 	background: url(img/soldier.png) no-repeat;
-  width: 28px;
-  height: 50px;
 }
 .hero.hero2 {
 	background-color: yellow;
-  background: url(img/princess.png) no-repeat;
-  width: 28px;
-  height: 50px;
+	background: url(img/princess.png) no-repeat;
 }
