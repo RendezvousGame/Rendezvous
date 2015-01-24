@@ -18,6 +18,15 @@ body {
 .cell.wall {
 	background-color: red;
 }
+.cell.fire {
+	background-color: orange;
+}
+
+.ice {
+	position: absolute;
+	background-color: lightblue;
+	z-index: 1;
+}
 
 .hero {
   width: 32px;
