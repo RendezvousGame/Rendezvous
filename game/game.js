@@ -56,13 +56,16 @@ Hero.prototype.setPosition = function(x, y, anim, plus) {
 		this.div.animate(o, {
 			duration: 100,
 			progress: function(animation, progress) {
-				self.div.css("backgroundPosition", (-((Math.floor(progress * heroAnimSpeed)) % heroImageFramesCount) * heroImageWidth) + "px " + (-self.direction * heroImageHeight) + "px");
+				self.updateDirection(progress);
 			}
 		});
 		if(!plus) this.queueReorder();
 	} else {
 		this.div.css(o);
 	}
+};
+Hero.prototype.updateDirection = function(progress) {
+	this.div.css("backgroundPosition", (-((Math.floor(progress * heroAnimSpeed)) % heroImageFramesCount) * heroImageWidth) + "px " + (-this.direction * heroImageHeight) + "px");
 };
 Hero.prototype.reorder = function() {
 	this.div.insertAfter(cells[this.y][this.x].div);
@@ -181,11 +184,48 @@ exports.init = function init() {
 };
 
 function move(dx, dy) {
+	if(!mainHero || !secondHero)
+		return;
+
 	var mainHeroCanMove = mainHero.canMove(dx, dy);
 	var secondHeroCanMove = secondHero.canMove(-dx, -dy);
 	if(mainHeroCanMove && secondHeroCanMove) {
+		// check final condition
+		if(mainHero.canGo(dx, dy) && secondHero.canGo(-dx, -dy)) {
+			var px = secondHero.x - mainHero.x;
+			var py = secondHero.y - mainHero.y;
+			if(Math.abs(px) <= 2 && Math.abs(py) <= 2 && Math.sign(dx) == Math.sign(px) && Math.sign(dy) == Math.sign(py)) {
+				// final!
+				var rx = mainHero.x + px * 0.5;
+				var ry = mainHero.y + py * 0.5;
+				var k = 0.3;
+				mainHero.direction = directionNumber(dx, dy);
+				secondHero.direction = directionNumber(-dx, -dy);
+				mainHero.updateDirection(0);
+				secondHero.updateDirection(0);
+				mainHero.div.finish().animate({
+					left: (rx - dx * k) * cellWidth - heroOffsetX,
+					top: (ry - dy * k) * cellHeight - heroOffsetY
+				}, 100);
+				secondHero.div.finish().animate({
+					left: (rx + dx * k) * cellWidth - heroOffsetX,
+					top: (ry + dy * k) * cellHeight - heroOffsetY
+				}, 100);
+
+				mainHero.div.css("zIndex", 2);
+				secondHero.div.css("zIndex", 2);
+
+				$("<div>").addClass("final").hide().appendTo(field).fadeIn(1000);
+
+				mainHero = null;
+				secondHero = null;
+				return;
+			}
+		}
+
 		mainHero.go(dx, dy);
 		secondHero.go(-dx, -dy);
+
 	} else {
 		if(!mainHeroCanMove)
 			mainHero.showTry(dx, dy);
@@ -194,7 +234,7 @@ function move(dx, dy) {
 	}
 };
 
-exports.createField = function createField(scheme) {
+exports.createField = function createField(scheme, playForGuy) {
 	field.empty();
 
 	fieldWidth = scheme[0].length;
@@ -216,13 +256,13 @@ exports.createField = function createField(scheme) {
 
 				if(scheme[i][j] == 'A') {
 					heroes[0] = new Hero();
-					heroes[0].div.addClass("hero1");
+					heroes[0].div.addClass("soldier");
 					heroes[0].setPosition(j, i, false);
 					type = '.';
 				}
 				else if(scheme[i][j] == 'B') {
 					heroes[1] = new Hero();
-					heroes[1].div.addClass("hero2");
+					heroes[1].div.addClass("princess");
 					heroes[1].setPosition(j, i, false);
 					type = '.';
 				}
@@ -264,8 +304,14 @@ exports.createField = function createField(scheme) {
 		cells.push(row);
 	}
 
-	mainHero = heroes[0];
-	secondHero = heroes[1];
+	if(playForGuy) {
+		mainHero = heroes[0];
+		secondHero = heroes[1];
+	} else {
+		mainHero = heroes[1];
+		secondHero = heroes[0];
+	}
+	mainHero.main = true;
 
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
@@ -280,8 +326,8 @@ exports.saveField = function saveField() {
 		}
 		types.push(row);
 	}
-	types[mainHero.y][mainHero.x] = 'A';
-	types[secondHero.y][secondHero.x] = 'B';
+	types[mainHero.y][mainHero.x] = mainHero.div.hasClass("soldier") ? 'A' : 'B';
+	types[secondHero.y][secondHero.x] = secondHero.div.hasClass("soldier") ? 'A' : 'B';
 	var s = "[\n";
 	for(var i = 0; i < cells.length; ++i) {
 		s += "\t\"" + types[i].join("") + "\",\n";

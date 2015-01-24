@@ -36,11 +36,21 @@ body {
 .hero {
 	position: absolute;
 }
-.hero.hero1 {
+.hero.soldier {
 	background-color: blue;
 	background: url(img/soldier.png) no-repeat;
 }
-.hero.hero2 {
+.hero.princess {
 	background-color: yellow;
 	background: url(img/princess.png) no-repeat;
+}
+
+.final {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	right: 20px;
+	bottom: 20px;
+	z-index: 1;
+	background-color: rgba(255, 255, 255, 0.9);
 }

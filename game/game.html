@@ -15,7 +15,7 @@
 			for(var i = 0; i < levels.length; ++i) {
 				(function(i) {
 					$("<button>").appendTo("#loadButtons").text("Load Level " + i).click(function() {
-						createField(levels[i]);
+						createField(levels[i], true);
 					});
 				})(i);
 			}
