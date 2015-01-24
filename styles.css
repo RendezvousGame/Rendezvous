@@ -1,0 +1,24 @@
+body {
+	background-color: white;
+}
+
+.cell {
+	position: absolute;
+	border: 1px solid black;
+}
+.cell.empty {
+	background-color: white;
+}
+.cell.wall {
+	background-color: red;
+}
+
+.hero {
+	position: absolute;
+}
+.hero.hero1 {
+	background-color: blue;
+}
+.hero.hero2 {
+	background-color: yellow;
+}
