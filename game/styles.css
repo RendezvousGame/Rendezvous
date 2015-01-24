@@ -40,6 +40,9 @@ body {
 }
 .hero.hero1 {
 	background-color: blue;
+	background: url(img/soldier.png) no-repeat;
+  width: 28px;
+  height: 50px;
 }
 .hero.hero2 {
 	background-color: yellow;
