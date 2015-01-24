@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* 
+
+3D Flat Buttons
+http://dubhe.com.br/freebies/3dflatbuttons/
+
+Developed by DUBHE 
+Version: 1.0 - 05/11/2014
+Author: Rafael Zago
+
+*/
+
+.button {
+    background-color:#bdc3c7;
+    font-size:13px;
+    text-decoration:none;
+    color:#333;
+    position:relative;
+    margin-left:35px;
+    padding:10px 20px;
+    border-left:solid 1px #d3d8db;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 0px #dcdfe1, 0px 5px 0px 0px #7f8c8d, 0px 10px 5px rgba(39, 39, 39, 0.8);
+}
+
+
+
+/* EFFECTS */
+
+
+.button:hover {
+    top:7px;
+    color: #95a5a6;
+    background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+    box-shadow: inset 0px 1px 0px #ecf0f1, 0px 1px 0px 0px #7f8c8d, 0px 2px 5px rgba(39, 39, 39, 0.8);
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+}
+
+
+/* COLORS */
+
+
+.button-primary {
+    color: #fff;
+    background-color: #3498db;
+    border-left:solid 1px #6fbaec;
+    box-shadow: inset 0px 1px 0px #73b0d8, 0px 6px 0px #2980b9, 0px 10px 5px rgba(39, 39, 39, 0.8);
+}
+.button-primary:hover {
+	color: #2980b9;
+	box-shadow: inset 0px 1px 0px #73b0d8, 0px 1px 0px 0px #2980b9, 0px 2px 5px rgba(39, 39, 39, 0.8);
+}
+.button-success {
+    color: #fff;
+    background-color: #2ecc71;
+    border-left:solid 1px #78e0a4;
+    box-shadow: inset 0px 1px 0px #6ccc95, 0px 6px 0px #27ae60, 0px 10px 5px rgba(39, 39, 39, 0.8);
+}
+.button-success:hover {
+	color: #26a95e;
+	box-shadow: inset 0px 1px 0px #6ccc95, 0px 1px 0px 0px #27ae60, 0px 2px 5px rgba(39, 39, 39, 0.8);
+}
+.button-error {
+    color: #fff;
+    background-color: #e74c3c;
+    border-left:solid 1px #ee897f;
+    box-shadow: inset 0px 1px 0px #e98a80, 0px 5px 0px #c0392b, 0px 10px 5px rgba(39, 39, 39, 0.8);
+}
+.button-error:hover {
+	color: #cc3e2f;
+	box-shadow: inset 0px 1px 0px #e98a80, 0px 1px 0px 0px #c0392b, 0px 2px 5px rgba(39, 39, 39, 0.8);
+}
+.button-warning {
+    color: #fff;
+    background-color: #e67e22;
+    border-left:solid 1px #f0ab6e;
+    box-shadow: inset 0px 1px 0px #e3a36a, 0px 6px 0px #d35400, 0px 10px 5px rgba(39, 39, 39, 0.8);
+}
+.button-warning:hover {
+	color: #c56816;
+	box-shadow: inset 0px 1px 0px #e3a36a, 0px 1px 0px 0px #d35400, 0px 2px 5px rgba(39, 39, 39, 0.8);
+}
+
+
+/* SIZES */
+
+
+.button-small {
+    font-size: 73%;
+}
+.button-regular {
+    font-size: 100%;
+}
+.button-large {
+    font-size: 140%;
+}

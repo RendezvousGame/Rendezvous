@@ -11,8 +11,8 @@ html {
 }
 
 body {
-  background: rgba(0, 0, 0, 0.60);
-  color: #515F69;
+  background: rgba(0, 0, 0, 0.80);
+  color: rgba(255, 255, 255, 0.60);
   font-size: 12px;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -22,6 +22,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
+  color: rgba(255, 255, 255, 1);
 }
 
 #header {
@@ -50,26 +51,23 @@ h1, h2, h3, h4, h5, h6 {
 
 
 section#play {
-  margin: 50px 0;
-  padding-bottom: 50px;
+  padding: 50px 0;
+  background: url(img/pattern.png) repeat;
+  margin-bottom: 50px;
 }
 
 #game {
   background: black;
-  height: 600px;
   width: 800px;
   padding: 10px;
-  margin: 0 auto;
-  
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+  margin: 0 auto; 
 }
 
 
-
 #footer {
+  background: #262626;
   padding: 20px;
+  margin-top: 50px;
   text-align: center;
 }
 
