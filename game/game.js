@@ -118,7 +118,7 @@ var typesToStyles = {
 	'f': 'fire'
 };
 
-var editMode = true;
+window.editMode = window.location.pathname.indexOf("/game.html") >= 0;
 
 function directionNumber(dx, dy) {
 	if(dx == 1) return 3;

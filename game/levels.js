@@ -8,6 +8,14 @@ window.levels = [
 	"xxxxxxx"
 ],
 [
+	"xxxxxx",
+	"xx...x",
+	"xxAx.x",
+	"xBx..x",
+	"x....x",
+	"xxxxxx",
+],
+[
 	"xxxxxxxxxxx",
 	"xB...i....x",
 	"xxxxxx..xxx",
@@ -97,6 +105,13 @@ window.levels = [
 	"xxxxxx",
 ],
 [
+	"xxxxxxxxxx",
+	"x....A..xx",
+	"x...xx..fx",
+	"x..fB....x",
+	"xxxxxxxxxx",
+],
+[
 	"xxxxxxxxxxxxxxx",
 	"x..x...A.fxf..x",
 	"x.....x.......x",
@@ -104,7 +119,7 @@ window.levels = [
 	"x.x.....f.xxf.x",
 	"x.f........Bf.x",
 	"xxxxxxxxxxxxxxx",
-]
+],
 ];
 
 window.levelTexts = [
