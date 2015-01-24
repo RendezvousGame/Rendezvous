@@ -114,21 +114,22 @@ Hero.prototype.go = function(dx, dy) {
 			iceDiv.finish();
 			if(plus)
 				iceDiv.insertAfter(cells[yyy][xxx].div);
-			iceDiv.animate({
+			var o = {
 				left: xxx * cellWidth,
 				top: yyy * cellHeight
-			}, 100);
+			};
+			if(cells[yyy][xxx].type == 'f') {
+				cells[yyy][xxx].type = '.';
+				cells[yyy][xxx].div.removeClass("fire").addClass("empty");
+				o.opacity = 0;
+			} else {
+				cells[yyy][xxx].iceDiv = iceDiv;
+			}
+			iceDiv.animate(o, 100);
 			if(!plus)
 				iceDiv.queue(function() {
 					iceDiv.insertAfter(cells[yyy][xxx].div);
 				});
-			if(cells[yyy][xxx].type == 'f') {
-				cells[yyy][xxx].type = '.';
-				cells[yyy][xxx].div.removeClass("fire").addClass("empty");
-				iceDiv.fadeOut(100);
-			} else {
-				cells[yyy][xxx].iceDiv = iceDiv;
-			}
 			cells[yy][xx].iceDiv = null;
 		}
 		this.direction = directionNumber(dx, dy);
