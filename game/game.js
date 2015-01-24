@@ -1,4 +1,5 @@
 var current_level = 0;
+var playAsGuy = true;
 
 jQuery(function($){
   
@@ -8,9 +9,33 @@ jQuery(function($){
     });
   });
   
+/*
+  $(document).on('mouseover', '#char-select div.hero', function(){
+    $(this).animate({opacity: 0.8});
+  }, function(){
+    $(this).animate({opacity: 0.4});
+  });
+*/
+  
+  $('#char-select div.hero').on({
+    click: function() {
+      $(this).parent().find("div.hero").removeClass("active").animate({opacity: 0.4});
+      $(this).addClass("active").animate({opacity: 1});
+      if(playAsGuy) {
+        playAsGuy = false;
+      } else {
+        playAsGuy = true;
+      }
+    }, mouseenter: function() {
+      if(!$(this).hasClass("active")) $(this).animate({opacity: 0.8});
+    }, mouseleave: function() {
+      if(!$(this).hasClass("active")) $(this).animate({opacity: 0.4});
+    }
+  });
+  
   $(document).on('click','.restart', function() {
     $("#field").fadeOut(function(){
-      createField(levels[current_level], true);
+      createField(levels[current_level], playAsGuy);
     });
   });
   
@@ -24,10 +49,10 @@ jQuery(function($){
   $(document).on('click','#next-level', function() {
     $("#field").fadeOut(function(){
       if(current_level + 1 < levels.length) {
-        createField(levels[++current_level], true);
+        createField(levels[++current_level], playAsGuy);
       } else {
         current_level = 0
-        createField(levels[current_level], true);
+        createField(levels[current_level], playAsGuy);
       }
     });
   });
