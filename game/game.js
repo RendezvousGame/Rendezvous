@@ -4,7 +4,7 @@ jQuery(function($){
   
   $("#play-button").click(function(){
     $("#field").fadeOut(function(){
-      createField(levels[0], true);
+      $("#field").new_level(current_level);
     });
   });
   
@@ -12,6 +12,13 @@ jQuery(function($){
     current_level = 0;
     $("#field").fadeOut(function(){
       createField(levels[current_level], true);
+    });
+  });
+  
+  $(document).on('click','#new-level', function() {
+    $("#field").fadeOut(function(){
+      if(current_level + 1 > levels.length) current_level = 0
+      $("#field").new_level(current_level);
     });
   });
   
@@ -30,8 +37,8 @@ jQuery(function($){
 
 $.fn.level_complete = function() {
   jQuery(function($){
-    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Play" id="restart" class="button button-error">Restart</a><a href="#" title="Play" id="next-level" class="button button-success">Next Level?</a></div></div>';
-    $("#field").fadeOut(function(){
+    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" title="Play" id="restart" class="button button-error">Restart</a><a href="#" title="Play" id="new-level" class="button button-success">Next Level?</a></div></div>';
+    $("#field").delay(500).fadeOut(function(){
       $("#field").width("100%").height("100%").html(html).css({
         'position' : 'absolute',
         'left' : '50%',
@@ -39,6 +46,23 @@ $.fn.level_complete = function() {
         'margin-left' : -$(this).width()/2,
         'margin-top' : -$(this).height()/2
       }).fadeIn();
+    });
+  });
+}
+
+$.fn.new_level = function(level) {
+  jQuery(function($){
+    var html = '<div id="start-screen"><div class="darken"><h4>Level ' + (level + 1) + '</h4></div></div>';
+    $("#field").fadeOut(function(){
+      $("#field").width("100%").height("100%").html(html).css({
+        'position' : 'absolute',
+        'left' : '50%',
+        'top' : '50%',
+        'margin-left' : -$(this).width()/2,
+        'margin-top' : -$(this).height()/2
+      }).fadeIn(function(){
+        $('<a href="#" title="Play" id="next-level" class="button button-primary">Play</a>').hide().appendTo("#start-screen .darken").fadeIn();
+      });
     });
   });
 }
