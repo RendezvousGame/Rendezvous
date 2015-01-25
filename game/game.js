@@ -67,6 +67,7 @@ jQuery(function($){
 
 $.fn.level_complete = function() {
   jQuery(function($){
+    $("#gamehint").fadeOut();
     $("#retry").fadeOut().remove();
     var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level?</a></div></div>';
     $("#field").delay(500).fadeOut(function(){
@@ -122,10 +123,11 @@ function play_music(sound) {
       break;
   }
 
-  audio.setAttribute("src","audio/" + sound);
-
-  audio.load(); //call this to just preload the audio without playing
-  audio.play(); //call this to play the song right away
+  if(sound) {
+   audio.setAttribute("src","audio/" + sound);
+   audio.load(); //call this to just preload the audio without playing
+   audio.play(); //call this to play the song right away 
+  }
 }
 
 
@@ -479,16 +481,16 @@ exports.createField = function createField(level, playForGuy) {
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
 
-	$("<div>").appendTo(field).addClass("gamehint").text(level.text);
-		
+	$("#gamehint").text(level.text).fadeIn(300);
+
   field.fadeIn();
   
   $("#retry").fadeOut().remove();
   $('<a href="#" onclick="return false;" title="Replay Level" id="retry" class="restart button button-error button-small">Reset</a>').hide().appendTo('body').css({
     position: 'absolute',
-    bottom: '20px',
+    top: '40px',
     right: '10px'
-  }).delay(10000).fadeIn('slow');
+  }).delay(2000 * current_level).fadeIn('slow');
   
 }
 
