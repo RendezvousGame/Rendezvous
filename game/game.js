@@ -116,18 +116,22 @@ $.fn.new_level = function(level) {
 
 
 window.audio = new Audio();
-audio.setAttribute("loop", "loop");
 
 function play_music(sound) {
   
   mySound = "";
+  audio.setAttribute("loop", "loop");
   
   switch(sound) {
     case "intro": 
-      sound = "AboutScene.mp3";
+      sound = "Andante.mp3";
       break;
     case "gameplay":
-      sound = "Andante.mp3";
+      sound = "Development.mp3";
+      break;
+    case "success":
+      audio.removeAttribute("loop", "loop");
+      sound = "Achievement.mp3";
       break;
     case null:
       audio.pause();
@@ -384,7 +388,7 @@ function move(dx, dy) {
 				secondHero.div.css("zIndex", 2);
 
 				$("<div>").addClass("final").hide().appendTo(field).fadeIn(2000, function(){
-  				window.play_music("intro");
+  				window.play_music("success");
   				$("body").level_complete();
 				});
 
