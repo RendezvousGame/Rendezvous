@@ -251,10 +251,10 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	height: 30px;
+	height: 15px;
 	padding-top: 10px;
 	background-color: black;
 	color: white;
 	text-align: center;
-	font-size: 12px !important;
+	font-size: 10px !important;
 }
