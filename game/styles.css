@@ -9,6 +9,53 @@ body {
 	background: url(img/single-grass.png) repeat;
 }
 
+#top-bar {
+  background: url(img/plank.png) repeat;
+  color: white;
+  font-size: 8px !important;
+  padding: 10px;
+  letter-spacing: -1px;
+}
+
+#top-bar a {
+  color: white;
+}
+
+#top-bar .fa {
+  font-size: 12px;
+  margin-top: -12px
+}
+
+#top-bar .l {
+  float: left;
+}
+
+#top-bar .r {
+  float: right;
+}
+
+#top-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#top-bar ul li {
+  width: auto;
+  float: left;
+  padding: 0 10px;
+  border-left: 1px solid black;
+}
+
+.clearfix {
+  clear: both;
+}
+
+
+
+
+
+
 #start-screen {
   width: 100%;
   height: 400px;
@@ -36,7 +83,7 @@ body {
   margin: 0;
 }
 
-h1#logo {
+.logo {
   margin: 0px;
   font-size: 26px;
   color: white;

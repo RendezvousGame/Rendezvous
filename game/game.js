@@ -1,5 +1,6 @@
 var current_level = 0;
 var playAsGuy = true;
+var sound = true;
 
 jQuery(function($){
   
@@ -9,13 +10,18 @@ jQuery(function($){
     });
   });
   
-/*
-  $(document).on('mouseover', '#char-select div.hero', function(){
-    $(this).animate({opacity: 0.8});
-  }, function(){
-    $(this).animate({opacity: 0.4});
+  $("#toggleSound").click(function(){
+    if(sound) {
+      sound = false;
+      window.play_music(null);
+      $(this).find(".fa").removeClass("fa-volume-up").addClass("fa-volume-off");
+    } else {
+      sound = true;
+      window.play_music("intro");
+      $(this).find(".fa").removeClass("fa-volume-off").addClass("fa-volume-up");
+    }
   });
-*/
+  
   
   $('#char-select div.hero').on({
     click: function() {
@@ -93,8 +99,7 @@ $.fn.new_level = function(level) {
 }
 
 
-;(function(exports) {
-  
+
 window.audio = new Audio();
 audio.setAttribute("loop", "loop");
 
@@ -109,6 +114,10 @@ function play_music(sound) {
     case "gameplay":
       sound = "Andante.mp3";
       break;
+    case null:
+      audio.pause();
+      return false;
+      break;
   }
 
   audio.setAttribute("src","audio/" + sound);
@@ -116,7 +125,10 @@ function play_music(sound) {
   audio.load(); //call this to just preload the audio without playing
   audio.play(); //call this to play the song right away
 }
-  
+
+
+
+;(function(exports) {  
   
 
 var field;
@@ -281,7 +293,7 @@ function Cell(x, y, type, div) {
 
 exports.init = function init() {
 	field = $("#field");
-	play_music("intro");
+	window.play_music("intro");
 
 	$(document).keydown(function(e) {
 		switch(e.which) {
@@ -341,7 +353,7 @@ function move(dx, dy) {
 				secondHero.div.css("zIndex", 2);
 
 				$("<div>").addClass("final").hide().appendTo(field).fadeIn(2000, function(){
-  				play_music("intro");
+  				window.play_music("intro");
   				$("body").level_complete();
 				});
 
@@ -364,7 +376,7 @@ function move(dx, dy) {
 
 exports.createField = function createField(scheme, playForGuy) {
 	field.empty();
-	play_music("gameplay");
+	window.play_music("gameplay");
 
 	fieldWidth = scheme[0].length;
 	fieldHeight = scheme.length;
@@ -455,9 +467,9 @@ exports.createField = function createField(scheme, playForGuy) {
   $("#retry").fadeOut().remove();
   $('<a href="#" onclick="return false;" title="Replay Level" id="retry" class="restart button button-error button-small">Reset</a>').hide().appendTo('body').css({
     position: 'absolute',
-    top: '10px',
+    bottom: '20px',
     right: '10px'
-  }).delay(5000).fadeIn('slow');
+  }).delay(10000).fadeIn('slow');
   
 }
 

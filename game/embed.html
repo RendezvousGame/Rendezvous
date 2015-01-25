@@ -6,14 +6,31 @@
 		<script type="text/javascript" src="game.js"></script>
 		<link href="styles.css" rel="stylesheet">
 		<link href="3dflatbuttons.css" type="text/css" rel="stylesheet">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	</head>
 	<body>
+  	
+  	<div id="top-bar">
+    	<div class="l">
+      	<ul>
+        	<li>Level 1</li>
+        	<li>Steps: 0</li>
+      	</ul>
+    	</div>
+    	<div class="r">
+      	<ul>
+        	<li><a href="#" id="toggleSound" onclick="return false;"><i class="fa fa-volume-up"></i></a></li>
+      	</ul>
+    	</div>
+    	<div class="clearfix"></div>
+  	</div>
+  	
   	<div id="bg">
     	
 		<div id="field">
   		<div id="start-screen">
     		<div class="darken">
-    		  <h1 id="logo">Rendezvous</h1>
+    		  <h1 class="logo">Rendezvous</h1>
           <div id="char-select">
             <div class="hero soldier active" style="width: 64px; height: 64px; float: left; position: static; background-position: -512px -192px;"></div>
             <div class="hero princess" style="width: 64px; height: 64px; float: left; position: static; background-position: 0px -64px;"></div>
