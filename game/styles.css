@@ -246,14 +246,15 @@ body {
 }
 
 #gamehint {
-  display: none;
+	display: none;
 	position: absolute;
-  bottom: 10px;
-  height: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  text-align: center;
-  font-size: 8px;
-  padding: 8px;
-  padding-bottom: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 30px;
+	padding-top: 10px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 12px !important;
 }

@@ -499,11 +499,8 @@ exports.createField = function createField(level, playForGuy) {
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
 
-	$("#gamehint").text(level.text).fadeIn();
-	setTimeout(function(){
-  	$("#gamehint").fadeOut();
-  }, 20000);
-		
+	$("#gamehint").text(level.text).fadeIn(300);
+
   field.fadeIn();
   
   $("#retry").fadeOut().remove();
