@@ -81,7 +81,7 @@ $.fn.level_complete = function() {
     
     if(current_level + 1 == levels.length) {
         current_level = 0;
-        $.removeCookie('current_level');
+        $.cookie('current_level', 0, { expires: 365, path: '/' });
         var html = '<div id="start-screen" class="game-over"><div class="darken"><h1 class="logo">Game Over</h1><div id="char-select"><div class="hero soldier active" style="width: 64px; height: 64px; float: left; position: static; background-position: -512px -128px;"></div><div class="hero princess" style="width: 64px; height: 64px; float: left; position: static; background-position: -512px -128px;"></div></div><div class="clearfix"></div></div>';
         $("#field").delay(500).fadeOut(function(){
           $("#field").width("100%").height("100%").html(html).css({
