@@ -12,3 +12,12 @@ Game is also available on [itch.io](http://starkshaw.itch.io/rendezvous)
 - [Zhenbang Xiao](https://github.com/starkshaw)
 - [Lavrentii Golovkov](https://github.com/lavr-delta)
 - [Jonatan Sala](https://github.com/IonatanSala)
+- 
+
+=====
+
+#### Other Credits
+
+##### Sprites
+- http://opengameart.org/content/lpc-forest-tiles
+- http://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles
