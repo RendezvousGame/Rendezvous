@@ -241,10 +241,12 @@ body {
 
 .gamehint {
 	position: absolute;
-	left: 5px;
-	right: 5px;
-	bottom: -70px;
+	left: -20px;
+	right: -20px;
+	bottom: -80px;
 	height: 65px;
+	padding-top: 10px;
 	background-color: black;
 	color: white;
+	text-align: center;
 }
