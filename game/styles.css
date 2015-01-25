@@ -258,3 +258,13 @@ body {
 	text-align: center;
 	font-size: 10px !important;
 }
+
+
+#start-screen.game-over #char-select {
+  width: 50px;
+}
+
+#start-screen.game-over #char-select div.hero {
+  opacity: 1 !important;
+  margin: -20px;
+}

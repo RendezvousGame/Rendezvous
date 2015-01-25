@@ -64,10 +64,10 @@ jQuery(function($){
       if(current_level < levels.length) {
         createField(levels[current_level], playAsGuy);
       } else {
+        
+        current_level = 0;
         $.removeCookie('current_level');
-        alert("What do we do next?");
-        /* current_level = 0
-        createField(levels[current_level], playAsGuy); */
+        
       }
     });
   });
@@ -78,6 +78,23 @@ $.fn.level_complete = function() {
   jQuery(function($){
     $("#gamehint").fadeOut();
     $("#retry").fadeOut().remove();
+    
+    if(current_level + 1 == levels.length) {
+        current_level = 0;
+        $.removeCookie('current_level');
+        var html = '<div id="start-screen" class="game-over"><div class="darken"><h1 class="logo">Game Over</h1><div id="char-select"><div class="hero soldier active" style="width: 64px; height: 64px; float: left; position: static; background-position: -512px -128px;"></div><div class="hero princess" style="width: 64px; height: 64px; float: left; position: static; background-position: -512px -128px;"></div></div><div class="clearfix"></div><a href="#" onclick="return false;" title="Play Game" id="play-button" class="button button-primary">Play Again?</a></div>';
+        $("#field").delay(500).fadeOut(function(){
+          $("#field").width("100%").height("100%").html(html).css({
+            'position' : 'absolute',
+            'left' : '50%',
+            'top' : '50%',
+            'margin-left' : -$(this).width()/2,
+            'margin-top' : -$(this).height()/2
+          }).fadeIn();
+        });
+        return false;
+    }
+    
     var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level</a><h5>You did it in ' + level_steps + ' steps.</h5></div></div>';
     $("#field").delay(500).fadeOut(function(){
       $("#field").width("100%").height("100%").html(html).css({
