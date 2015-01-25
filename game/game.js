@@ -377,6 +377,7 @@ function move(dx, dy) {
 exports.createField = function createField(scheme, playForGuy) {
 	field.empty();
 	window.play_music("gameplay");
+	$(".level-count").html(current_level);
 
 	fieldWidth = scheme[0].length;
 	fieldHeight = scheme.length;
