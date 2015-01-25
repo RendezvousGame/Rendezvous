@@ -14,6 +14,27 @@
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+      jQuery(function($){
+        // prevent arrow key scroll
+        var ar=new Array(33,34,35,36,37,38,39,40);
+        $(document).keydown(function(e) {
+            
+            // focus on iframe
+            var iframe = $('iframe#gameplay');
+            iframe[0].contentWindow.focus();
+          
+             var key = e.which;
+              //console.log(key);
+              //if(key==35 || key == 36 || key == 37 || key == 39)
+              if($.inArray(key,ar) > -1) {
+                  e.preventDefault();
+                  return false;
+              }
+              return true;
+        });
+      })  
+    </script>
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
