@@ -1,8 +1,7 @@
 # Rendezvous
 Global Game Jam Dublin 2015, Sposored by Microsoft
 
-[**Online Play!**](http://rendezvousgame.github.io/Rendezvous/)  
-Game is also available on [itch.io](http://starkshaw.itch.io/rendezvous)  
+[**Online Play!**](http://rendezvousgame.github.io/)  
 
 =====
 
