@@ -123,10 +123,11 @@ function play_music(sound) {
       break;
   }
 
-  audio.setAttribute("src","audio/" + sound);
-
-  audio.load(); //call this to just preload the audio without playing
-  audio.play(); //call this to play the song right away
+  if(sound) {
+   audio.setAttribute("src","audio/" + sound);
+   audio.load(); //call this to just preload the audio without playing
+   audio.play(); //call this to play the song right away 
+  }
 }
 
 
