@@ -11,7 +11,7 @@ scheme:
 	"xxxxx..x..xxxxx",
 	"xxxxxxxx...xxxx",
 	"x..xxxxx.x...xx",
-	".............Bx",
+	"x............Bx",
 	"xxxxxxxxxxxxxxx"
 ],
 text: "Sometimes we are going in opposite directions..."
