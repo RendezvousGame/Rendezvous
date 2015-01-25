@@ -116,11 +116,19 @@ $.fn.new_level = function(level) {
 
 
 window.audio = new Audio();
+var loop_audio = true;
+
+audio.addEventListener('ended', function() {
+    if(loop_audio){
+      this.currentTime = 0;
+      this.play();
+    }
+}, false);
 
 function play_music(sound) {
   
   mySound = "";
-  audio.setAttribute("loop", "loop");
+  loop_audio = true;
   
   switch(sound) {
     case "intro": 
@@ -130,7 +138,7 @@ function play_music(sound) {
       sound = "Development.mp3";
       break;
     case "success":
-      audio.removeAttribute("loop", "loop");
+      loop_audio = false;
       sound = "Achievement.mp3";
       break;
     case null:
