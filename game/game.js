@@ -64,6 +64,7 @@ jQuery(function($){
       if(current_level < levels.length) {
         createField(levels[current_level], playAsGuy);
       } else {
+        $.removeCookie('current_level');
         alert("What do we do next?");
         /* current_level = 0
         createField(levels[current_level], playAsGuy); */
