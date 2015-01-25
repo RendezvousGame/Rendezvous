@@ -1,6 +1,7 @@
 var current_level = 0;
 var playAsGuy = true;
 var sound = true;
+var level_steps = 0;
 
 jQuery(function($){
   
@@ -54,11 +55,12 @@ jQuery(function($){
   
   $(document).on('click','#next-level', function() {
     $("#field").fadeOut(function(){
-      if(current_level + 1 < levels.length) {
+      if(current_level < levels.length) {
         createField(levels[current_level], playAsGuy);
       } else {
-        current_level = 0
-        createField(levels[current_level], playAsGuy);
+        alert("What do we do next?");
+        /* current_level = 0
+        createField(levels[current_level], playAsGuy); */
       }
     });
   });
@@ -69,7 +71,7 @@ $.fn.level_complete = function() {
   jQuery(function($){
     $("#gamehint").fadeOut();
     $("#retry").fadeOut().remove();
-    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level?</a></div></div>';
+    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level?</a><h5>You did it in ' + level_steps + ' steps.</h5></div></div>';
     $("#field").delay(500).fadeOut(function(){
       $("#field").width("100%").height("100%").html(html).css({
         'position' : 'absolute',
@@ -343,6 +345,9 @@ function move(dx, dy) {
 	var mainHeroCanMove = mainHero.canMove(dx, dy);
 	var secondHeroCanMove = secondHero.canMove(-dx, -dy);
 	if(mainHeroCanMove && secondHeroCanMove) {
+  	
+  	$(".level-steps").html(++level_steps);
+  	
 		// check final condition
 		if(mainHero.canGo(dx, dy) && secondHero.canGo(-dx, -dy)) {
 			var px = secondHero.x - mainHero.x;
@@ -392,8 +397,11 @@ function move(dx, dy) {
 
 exports.createField = function createField(level, playForGuy) {
 	field.empty();
+	
 	window.play_music("gameplay");
 	$(".level-count").html(current_level + 1);
+  level_steps = 0;
+	$(".level-steps").html(level_steps);
 
 	var scheme = level.scheme;
 
