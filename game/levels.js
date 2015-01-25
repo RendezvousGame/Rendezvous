@@ -1,45 +1,7 @@
-window.levels = [
-[
-	"xxxxxxx",
-	"xA....x",
-	"x.xxx.x",
-	"x.x.x.x",
-	"x..B..x",
-	"xxxxxxx"
-],
-[
-	"xxxxxx",
-	"xx...x",
-	"xxAx.x",
-	"xBx..x",
-	"x....x",
-	"xxxxxx",
-],
-[
-	"xxxxxxxxxxx",
-	"xB...i....x",
-	"xxxxxx..xxx",
-	"xA...x.xxxx",
-	"x.xx.x.xxxx",
-	"x....x.xxxx",
-	"x.xx.x.xxxx",
-	"x.xx.x...xx",
-	"x........xx",
-	"xxxxxxxxxxx"
-],
-[
-	"xxxxx",
-	"x.A.x",
-	"x.x.x",
-	"x..Bx",
-	"xxxxx",
-],
-[
-	"xxxxxxxxxxxxx",
-	"x...x.......x",
-	"xA..f..i...Bx",
-	"xxxxxxxxxxxxx",
-],
+window.levels = [{
+// level 0
+// introductory
+scheme:
 [
 	"xxxxxxxxxxxxxxx",
 	"xA.........xxxx",
@@ -52,42 +14,66 @@ window.levels = [
 	".............Bx",
 	"xxxxxxxxxxxxxxx"
 ],
+text: 	"Sometimes we are going in opposite directions..."
+}, {
+// level 1
+// simple
+scheme:
 [
-	"xxxxxxxxxxxxxxx",
-	"xA............x",
-	"x...iiifx.....x",
-	"x..f..........x",
-	"x.............x",
-	"x.....i.......x",
-	"x....f........x",
-	"x.......ff....x",
-	"x..........fffx",
-	"x.............x",
-	"x............Bx",
-	"xxxxxxxxxxxxxxx",
+	"xxxxxxx",
+	"xA....x",
+	"x.xxx.x",
+	"x.x.x.x",
+	"x..B..x",
+	"xxxxxxx"
 ],
+text: "...but still getting to the same place."
+}, {
+// level 2
+// simple too
+scheme:
 [
-	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	"xA...........................x",
-	"x............................x",
-	"x...i..i..i..i..i..i..i..i...x",
-	"x............................x",
-	"x......i.....................x",
-	"x...i.......i............i...x",
-	"x............................x",
-	"x........i..........i........x",
-	"x............................x",
-	"x......i.........i.i.........x",
-	"x............................x",
-	"x....i......i................x",
-	"x.....................i......x",
-	"x............................x",
-	"x............i.......i.......x",
-	"x............................x",
-	"x............................x",
-	"x...........................Bx",
-	"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+	"xxxxxx",
+	"xx...x",
+	"xxAx.x",
+	"xBx..x",
+	"x....x",
+	"xxxxxx",
 ],
+text: "It's not always simple."
+}, {
+// level 3
+// may get to a dead end
+scheme:
+[
+	"xxxxx",
+	"x.A.x",
+	"x.x.x",
+	"x..Bx",
+	"xxxxx",
+],
+text: "Sometimes it's better to get a fresh start."
+}, {
+// level 4
+// moving ice
+scheme:
+[
+	"xxxxxxxxxxx",
+	"xB...i....x",
+	"xxxxxx..xxx",
+	"xA...x.xxxx",
+	"x.xx.x.xxxx",
+	"x....x.xxxx",
+	"x.xx.x.xxxx",
+	"x.xx.x...xx",
+	"x........xx",
+	"xxxxxxxxxxx"
+],
+text: "Sometimes you have to push your boundaries..."
+}, {
+// level 5
+// fire
+scheme:
 [
 	"xxxxxx",
 	"xf...x",
@@ -96,6 +82,21 @@ window.levels = [
 	"xx.B.x",
 	"xxxxxx",
 ],
+text: "level 5"
+}, {
+// level 6
+// 
+scheme:
+[
+	"xxxxxxxxxxxxx",
+	"x...x.......x",
+	"xA..f..i...Bx",
+	"xxxxxxxxxxxxx",
+],
+text: "...and fight with fire."
+}, {
+// level 7
+scheme:
 [
 	"xxxxxx",
 	"xAf.Bx",
@@ -104,6 +105,10 @@ window.levels = [
 	"xf...x",
 	"xxxxxx",
 ],
+text: "level 7"
+}, {
+// level 8
+scheme:
 [
 	"xxxxxxxxxx",
 	"x....A..xx",
@@ -111,6 +116,10 @@ window.levels = [
 	"x..fB....x",
 	"xxxxxxxxxx",
 ],
+text: "level 8"
+}, {
+// level 9
+scheme:
 [
 	"xxxxxxxxxxx",
 	"x.A.f..f..x",
@@ -118,6 +127,10 @@ window.levels = [
 	"x......fx.x",
 	"xxxxxxxxxxx",
 ],
+text: "level 9"
+}, {
+// level 10
+scheme:
 [
 	"xxxxxxxxxxxxxxx",
 	"x..x...A.fxf..x",
@@ -127,6 +140,10 @@ window.levels = [
 	"x.f........Bf.x",
 	"xxxxxxxxxxxxxxx",
 ],
+text: "level 10"
+}, {
+// level 11
+scheme:
 [
 	"xxxxxxxxxx",
 	"xx.xAfx..x",
@@ -134,11 +151,5 @@ window.levels = [
 	"x.x.x..B.x",
 	"xxxxxxxxxx",
 ],
-];
-
-window.levelTexts = [
-	"We need to meet!",
-	"You cannot fail",
-	"You can fail",
-	""
-];
+text: "level 11"
+}];
