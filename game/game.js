@@ -5,6 +5,12 @@ var level_steps = 0;
 
 jQuery(function($){
   
+  var level_cookie = $.cookie('current_level');
+  if(level_cookie) {
+    current_level = parseInt(level_cookie);
+    $(".level-count").html(current_level + 1);
+  }
+  
   $("#play-button").click(function(){
     $("#field").fadeOut(function(){
       $("#field").new_level(current_level);
@@ -71,7 +77,7 @@ $.fn.level_complete = function() {
   jQuery(function($){
     $("#gamehint").fadeOut();
     $("#retry").fadeOut().remove();
-    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level?</a><h5>You did it in ' + level_steps + ' steps.</h5></div></div>';
+    var html = '<div id="start-screen"><div class="darken"><h4>What do we do next?</h4><a href="#" onclick="return false;" title="Replay" id="restart-level" class="restart button button-error">Replay Level</a><a href="#" onclick="return false;" title="Play" id="new-level" class="button button-success">Next Level</a><h5>You did it in ' + level_steps + ' steps.</h5></div></div>';
     $("#field").delay(500).fadeOut(function(){
       $("#field").width("100%").height("100%").html(html).css({
         'position' : 'absolute',
@@ -81,6 +87,10 @@ $.fn.level_complete = function() {
         'margin-top' : -$(this).height()/2
       }).fadeIn();
     });
+    
+    // use cookies to save progress
+    $.cookie('current_level', current_level + 1, { expires: 365, path: '/' });
+    
   });
 }
 
@@ -492,7 +502,7 @@ exports.createField = function createField(level, playForGuy) {
 	$("#gamehint").text(level.text).fadeIn();
 	setTimeout(function(){
   	$("#gamehint").fadeOut();
-  }, 10000);
+  }, 20000);
 		
   field.fadeIn();
   
