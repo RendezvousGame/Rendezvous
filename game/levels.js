@@ -14,7 +14,7 @@ scheme:
 	".............Bx",
 	"xxxxxxxxxxxxxxx"
 ],
-text: 	"Sometimes we are going in opposite directions..."
+text: "Sometimes we are going in opposite directions..."
 }, {
 // level 1
 // simple
@@ -82,7 +82,7 @@ scheme:
 	"xx.B.x",
 	"xxxxxx",
 ],
-text: "level 5"
+text: "... fight with fire..."
 }, {
 // level 6
 // 
@@ -93,7 +93,7 @@ scheme:
 	"xA..f..i...Bx",
 	"xxxxxxxxxxxxx",
 ],
-text: "...and fight with fire."
+text: "... and melt the ice."
 }, {
 // level 7
 scheme:
@@ -105,7 +105,7 @@ scheme:
 	"xf...x",
 	"xxxxxx",
 ],
-text: "level 7"
+text: "We're always in endless chase..."
 }, {
 // level 8
 scheme:
@@ -116,20 +116,9 @@ scheme:
 	"x..fB....x",
 	"xxxxxxxxxx",
 ],
-text: "level 8"
+text: "... so close, yet so far."
 }, {
 // level 9
-scheme:
-[
-	"xxxxxxxxxxx",
-	"x.A.f..f..x",
-	"x..xBf....x",
-	"x......fx.x",
-	"xxxxxxxxxxx",
-],
-text: "level 9"
-}, {
-// level 10
 scheme:
 [
 	"xxxxxxxxxxxxxxx",
@@ -140,16 +129,27 @@ scheme:
 	"x.f........Bf.x",
 	"xxxxxxxxxxxxxxx",
 ],
-text: "level 10"
+text: "And nothing can stop us..."
+}, {
+// level 10
+scheme:
+[
+	"xxxxxxxxxx",
+	"x....f...x",
+	"x.Af..f.fx",
+	"x..Bf...fx",
+	"xxxxxxxxxx",
+],
+text: "... from being together."
 }, {
 // level 11
 scheme:
 [
-	"xxxxxxxxxx",
-	"xx.xAfx..x",
-	"x..x...f.x",
-	"x.x.x..B.x",
-	"xxxxxxxxxx",
+	"xxxxxxxxxxx",
+	"x.A.f..f..x",
+	"x..xBf....x",
+	"x......fx.x",
+	"xxxxxxxxxxx",
 ],
-text: "level 11"
+text: "Forever."
 }];
