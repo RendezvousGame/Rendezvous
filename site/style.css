@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,600,400);
+@import url(http://fonts.googleapis.com/css?family=Bitter);
 @import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
 
 
@@ -14,7 +14,7 @@ body {
   background: rgba(0, 0, 0, 0.80);
   color: rgba(255, 255, 255, 0.60);
   font-size: 12px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Bitter', serif;
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
@@ -24,6 +24,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', cursive;
   color: rgba(255, 255, 255, 1);
 }
+
+h4 {
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+p {
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
 
 #header {
   background: black;
