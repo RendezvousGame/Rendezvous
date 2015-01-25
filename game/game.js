@@ -48,14 +48,14 @@ jQuery(function($){
   $(document).on('click','#new-level', function() {
     $("#field").fadeOut(function(){
       if(current_level + 1 > levels.length) current_level = 0
-      $("#field").new_level(current_level);
+      $("#field").new_level(++current_level);
     });
   });
   
   $(document).on('click','#next-level', function() {
     $("#field").fadeOut(function(){
       if(current_level + 1 < levels.length) {
-        createField(levels[current_level++], playAsGuy);
+        createField(levels[current_level], playAsGuy);
       } else {
         current_level = 0
         createField(levels[current_level], playAsGuy);
@@ -92,7 +92,9 @@ $.fn.new_level = function(level) {
         'margin-left' : -$(this).width()/2,
         'margin-top' : -$(this).height()/2
       }).fadeIn(function(){
-        $('<a href="#" onclick="return false;" title="Play" id="next-level" class="button button-primary">Play</a>').hide().appendTo("#start-screen .darken").fadeIn();
+        setTimeout(function(){
+          $('<a href="#" onclick="return false;" title="Play" id="next-level" class="button button-primary">Play</a>').hide().appendTo("#start-screen .darken").trigger('click');
+        }, 500);
       });
     });
   });
@@ -389,7 +391,7 @@ function move(dx, dy) {
 exports.createField = function createField(level, playForGuy) {
 	field.empty();
 	window.play_music("gameplay");
-	$(".level-count").html(current_level);
+	$(".level-count").html(current_level + 1);
 
 	var scheme = level.scheme;
 
