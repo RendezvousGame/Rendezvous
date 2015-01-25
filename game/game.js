@@ -374,9 +374,11 @@ function move(dx, dy) {
 	}
 };
 
-exports.createField = function createField(scheme, playForGuy) {
+exports.createField = function createField(level, playForGuy) {
 	field.empty();
 	window.play_music("gameplay");
+
+	var scheme = level.scheme;
 
 	fieldWidth = scheme[0].length;
 	fieldHeight = scheme.length;
@@ -461,6 +463,8 @@ exports.createField = function createField(scheme, playForGuy) {
 
 	for(var i = 0; i < heroes.length; ++i)
 		heroes[i].div.insertAfter(cells[heroes[i].y][heroes[i].x].div);
+
+	$("<div>").appendTo(field).addClass("gamehint").text(level.text);
 		
   field.fadeIn();
   

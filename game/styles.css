@@ -238,3 +238,13 @@ body {
 	background-color: rgba(255, 255, 255, 0.9);
 	background: url(img/pw_maze_white.png) repeat;
 }
+
+.gamehint {
+	position: absolute;
+	left: 5px;
+	right: 5px;
+	bottom: -70px;
+	height: 65px;
+	background-color: black;
+	color: white;
+}
